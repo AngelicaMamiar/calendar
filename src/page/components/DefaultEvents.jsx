@@ -6,7 +6,7 @@ const defaultEvents =
         start: new Date(2024,8,25,10,0),
         end: new Date(2024,8,26,10,0),
         desc: 'Event 1',
-        color: 'red',
+        color: 'blur',
         tipo: 'test',
     },
     { 
@@ -15,7 +15,7 @@ const defaultEvents =
         start: new Date(2024,8,20,10,0),
         end: new Date(2024,8,21,10,0),
         desc: 'Event 2',
-        color: 'blue',
+        color: '#f15550',
         tipo: 'test2',
     }
 ]

@@ -1,25 +1,27 @@
 .Screen {
     display: flex;
-    background-color: #f4f7fc; /* Un blanc cassé pour une apparence douce */
+    background-color: #f5f5f5; 
 }
 
 .toolbar {
     height: 100vh;
     width: 20%;
-    background-color: #b9bdc2; /* Un bleu foncé pour un contraste élégant */
-    color: #ffffff; /* Texte blanc pour lisibilité */
+    background-color: #2e3b4e; 
+    color: #ffffff;
     border-right: 1px solid #b0b0b0;
-    
 }
 
 .calendar-container {
     height: 100vh;
     width: 80%;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
 }
 
 .calendar {
-    height: 100vh;
-    width: 80%;
+    width: 90%; 
+    height: auto; /* Ajustement dynamique selon le contenu */
 }
 
 .modal {
@@ -28,7 +30,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.3); /* Un peu plus opaque pour un meilleur contraste */
+    background-color: rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,107 +38,94 @@
 }
 
 .modal-content {
-    background-color: #ffffff; /* Un blanc pur pour la boîte modale */
+    background-color: #ffffff;
     padding: 20px;
-    border-radius: 8px; /* Coins légèrement arrondis pour un aspect moderne */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Une ombre plus douce et subtile */
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     z-index: 10000;
 }
 
+/* Toolbar */
 .rbc-toolbar {
     height: 10vh;
-    color: #616e7c; /* Un gris subtil pour un look plus moderne */
+    color: #616e7c;
     font-size: 22px;
 }
 
 .rbc-btn-group > button {
     border: 0;
-    background-color: #f0f3f7; /* Un arrière-plan léger pour les boutons */
+    background-color: #f0f3f7;
 }
 
 .rbc-toolbar button {
     color: #616e7c;
     border: 1px solid #cecece;
-    background-color: #f0f3f7;
+    background-color: #e7ebf0;
     border-radius: 5px;
 }
 
 .rbc-toolbar button:active,
 .rbc-toolbar button.rbc-active {
-    background-color: #a8b6c1; /* Couleur plus visible au clic */
+    background-color: #a8b6c1;
     border-color: #bbb;
 }
 
+/* Calendar view */
 .rbc-month-view {
-    border-color: rgba(220, 220, 220, 0.8); /* Bordure légère pour la vue mensuelle */
-}
-
-.rbc-month-row + .rbc-month-row {
-    border-top: 1px solid rgba(200, 200, 200, 0.8); /* Ligne entre les semaines */
-}
-
-.rbc-day-bg + .rbc-day-bg {
-    border-left: 1px solid rgba(200, 200, 200, 0.8); /* Ligne entre les jours */
+    border-color: rgba(220, 220, 220, 0.8);
 }
 
 .rbc-header {
-    color: #2e3b4e; /* Couleur du texte de l'en-tête pour une meilleure visibilité */
-    border-bottom: 2px solid rgba(200, 200, 200, 0.8); /* Ligne plus visible sous les jours de la semaine */
-}
-
-.rbc-header + .rbc-header {
-    border-top: 0px;
-    border-left: 1px solid rgba(200, 200, 200, 0.8); /* Ligne entre les en-têtes de jours */
+    color: #2e3b4e;
+    border-bottom: 2px solid rgba(200, 200, 200, 0.8);
 }
 
 .rbc-off-range-bg {
-    background-color: #e0e0e0; /* Couleur plus claire pour les jours hors période */
+    background-color: #f0f0f0;
 }
 
 .rbc-today {
-    background-color: #4e73df; /* Couleur plus vive pour la date du jour */
-    color: white; /* Texte blanc pour plus de contraste */
+    background-color: #4e73df;
+    color: white;
 }
 
+/* Buttons and Links */
 .rbc-button-link {
     margin: 5px;
     font-size: 14px;
-    color: #4e73df; /* Couleur cohérente avec les autres éléments */
+    color: #4e73df;
 }
 
-.rbc-off-range .rbc-button-link {
-    color: #e0e0e0;
-
+/* Time slots and agenda */
+.rbc-time-content, .rbc-time-slot {
+    color: #bbb;
+    border-color: #b0b0b036;
 }
 
-.rbc-nom .rbc-button-link {
-   background-color:#2e3b4e;
-   color: #ffffff;
-   border-radius: 2px;
-   padding: 2px;
-   padding-right: 2px;
-   margin: 5px;
-   font-size: 16px;
-}
-
-.rbc-time-content, .rbc-time-content > .rbc-time-slot, .rbc-timeslot-group, .rbc-time-slot {
-   color: #bbb;
-   border-color:#b0b0b036;
-}
-
-.rbc-day-slot .rbc-time-slot{
-    border-top: 1px solid #c8c8c8c8;
-
-}
-
-
-.rbc-agenda-content, .rbc-agenda-view {
-    color: #aaa;
-}
 .rbc-agenda-date-cell, .rbc-agenda-time-cell {
     background-color: #262626;
 }
+
 .rbc-agenda-event-cell {
     border-radius: 20px;
-   
+}
+
+/* Position adjustments */
+.Screen {
+    display: flex;
+    flex-direction: row; /* Keep the toolbar on the left and calendar on the right */
+    height: 100vh;
+}
+
+.calendar-container {
+    width: 80%;
+    height: 100vh;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.calendar {
+    width: 100%;
+    height: 90%; /* Take most of the screen height */
 }

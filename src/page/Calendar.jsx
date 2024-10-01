@@ -4,16 +4,17 @@ import moment from "moment";
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import './components/Component-Calendar-Css.css';  // Assurez-vous que le CSS place correctement le calendrier
+import './components/Component-Calendar-Css.css';
 import defaultEvents from "./components/DefaultEvents";
 import EventModal from "./components/EventModal";
+import Add from "./components/add/add";
 
 const DragAndDropCalendar = withDragAndDrop(Calendar);
 const localizer = momentLocalizer(moment);
 
 function MyCalendar() {
     const [events, setEvents] = useState(defaultEvents);
-    const [SelectedEvents, setSelectedEvents] = useState(null);
+    const [selectedEvents, setSelectedEvents] = useState(null);
 
     const eventStyle = (event) => ({
         style: {
@@ -48,7 +49,7 @@ function MyCalendar() {
     return (
         <div className="Screen">
             <div className="toolbar">
-                <p>Calendar</p>
+                <Add/>
             </div>
 
             <div className="calendar-container">
@@ -69,9 +70,9 @@ function MyCalendar() {
                 />
             </div>
 
-            {SelectedEvents && (
+            {selectedEvents && (
                 <EventModal 
-                    event={SelectedEvents} 
+                    event={selectedEvents} 
                     onClose={handleEventClose} 
                 />
             )}
@@ -80,11 +81,13 @@ function MyCalendar() {
 }
 
 const CustomToolbar = ({ label, onView, onNavigate, views }) => {
-    const [itemText, setItemText] = useState('month'); // Définit la vue par défaut (month)
+   
+    
+    const [itemText, setItemText] = useState('month');
 
     const handleViewChange = (view) => {
-        onView(view); // Change la vue actuelle
-        setItemText(view); // Met à jour le texte du bouton avec la vue sélectionnée
+        onView(view);
+        setItemText(view);
     };
 
     return (
@@ -97,10 +100,10 @@ const CustomToolbar = ({ label, onView, onNavigate, views }) => {
                         className="btn btn-secondary dropdown-toggle" 
                         type="button" 
                         id="dropdownMenuButton" 
-                        data-bs-toggle="dropdown" // Correction ici
+                        data-bs-toggle="dropdown" 
                         aria-expanded="false"
                     >
-                        {itemText} {/* Affiche la vue sélectionnée */}
+                        {itemText}
                     </button>
 
                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -108,14 +111,20 @@ const CustomToolbar = ({ label, onView, onNavigate, views }) => {
                             <li key={index}>
                                 <button 
                                     className="dropdown-item" 
-                                    onClick={() => handleViewChange(view)}
-                                >
+                                    onClick={() => { handleViewChange(view); setItemText(view); }}>
                                     {view}
                                 </button>
                             </li>
                         ))}
+                        {views.length > 2 && <hr className='dropdown-divider' />} {/* Divider after third item */}
                     </ul>
-                </div>  
+                </div> 
+
+                <div className="toolbar-navigation" style={{ marginLeft: '15px'}}> 
+                    <button className='btn btn-secondary btn-ls mr-2 border-0' onClick={() => onNavigate('TODAY')}>today</button>
+                    <button className='btn btn-sm mr-2 text-secondary' onClick={() => onNavigate('PREV')} style={{ marginLeft: '15px}'}}> <i className="bi bi-caret-left"></i></button>
+                    <button className='btn btn-sm mr-2 text-secondary' onClick={() => onNavigate('NEXT')}> <i className="bi bi-caret-right"></i></button>
+                </div>
             </div>
         </div>
     );

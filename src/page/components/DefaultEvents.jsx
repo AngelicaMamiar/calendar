@@ -7,7 +7,7 @@ const defaultEvents =
         end: new Date(2024,8,26,10,0),
         desc: 'Event 1',
         color: 'blur',
-        tipo: 'test',
+        guy: 'test',
     },
     { 
         id: 2,
@@ -16,7 +16,24 @@ const defaultEvents =
         end: new Date(2024,8,21,10,0),
         desc: 'Event 2',
         color: '#f15550',
-        tipo: 'test2',
+        guy: 'test2',
+    },
+    { 
+        id: "3",
+        title: 'Test3',
+        start: new Date(2024,8,20,10,0),
+        end: new Date(2024,8,21,10,0),
+        desc: 'Event 2',
+        color: '#f15550',
+        guy: 'test2',
+    },{ 
+        id: '4',
+        title: 'Test4',
+        start: new Date(2024,8,20,10,0),
+        end: new Date(2024,8,20,11,0),
+        desc: 'Event 2',
+        color: '#f15550',
+        guy: 'test2',
     }
 ]
 

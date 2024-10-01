@@ -3,7 +3,7 @@ import './Component-Calendar-Css.css';
 const EventModal = ({event, onClose}) => {
     return (
         <div className="modal">
-            <div className="modal-cotent">
+            <div className="modal-content">
                 <h2>{event.title}</h2>
                 <p>{event.desc}</p>
                 <p>start: {event.start.toLocaleString()}</p>
